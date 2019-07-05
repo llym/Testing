@@ -18,11 +18,14 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 <body>      
       <nav class="navbar navbar-expand-sm  navbar-dark" style="background-color: #0069A8">
         <img  class="ml-2" src="common/image/logo.jpg">
-        <div >
-          <button style="margin-left: 880px">
-            <img style="height: 20px;width: 20px;" src="common/image/user.png">admin管理员
-          </button>
-        </div>
+        <div style="margin-left: 880px">
+      <button>
+        <img style="height: 20px;width: 20px;" src="common/image/user.png">admin管理员
+      </button>
+      <button>
+        <img style="height: 20px;width: 20px;border-left:1px #00FF66" src="common/image/poweroff.png">退出
+      </button>
+    </div>
       </nav>
        
       <div class="container-fluid" style="margin-top:0px;height: 600px;">
@@ -42,7 +45,9 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
             <hr class="d-sm-none">
           </div>
           <div class="col-sm-10">
-            <div><h6 >图书管理</h6>
+            <div>
+            <divclass="mb-5"><img style="height:20px;weight:20px;" src="common/image/home.png"> 图书管理
+            </div>
             <table id="bookTable"
 				class="table table-condensed table-hover table-striped">
 				<tr>
