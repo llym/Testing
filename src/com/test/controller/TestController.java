@@ -8,7 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,7 +37,7 @@ public class TestController {
 		String a=userService.findUserService(username, password,status,session);
 		return a;
 	}	
-	//显示用户列表
+	//显示图书列表
 		@RequestMapping("/success.do")
 		public ModelAndView play() {
 			List<Book> list = bookService.getBookService("");
@@ -44,13 +46,26 @@ public class TestController {
 			mav.addObject("books",list);
 			return mav;
 		}
+		//显示借阅列表
 		@RequestMapping("/borrow.do")
 		public ModelAndView borrow() {
 			List<Borrow> list = borrowService.getBorrowService("");
+			
 			System.out.println(list);
 			ModelAndView mav =new ModelAndView("adminHistory");
 			mav.addObject("historys",list);
 			return mav;
 		}
-		
+
+		//查询指令
+	    @RequestMapping("/hello.do")
+	    public ModelAndView s(Model model,@RequestParam("searc") String s){
+			String a=s;
+			System.out.println(a);
+			List<Book> list = bookService.findBookService(a);
+			System.out.println(list);
+			ModelAndView mav =new ModelAndView("firstPag");
+			mav.addObject("books",list);
+			return mav;
+	    }
 }

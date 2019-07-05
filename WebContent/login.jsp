@@ -124,14 +124,6 @@
         });
     }); 
     
-    function login(){
-    	
-    	 
-        
-         
-         
-    	
-    }
     </script>
 
 </head>
