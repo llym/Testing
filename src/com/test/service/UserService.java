@@ -7,7 +7,7 @@ import com.test.entity.User;
 
 public interface UserService {
 	
-	public String findUserService(String username,String password, HttpSession session);
+	public String findUserService(String username,String password,String status, HttpSession session);
 	
 	public String insertUserService(User user);
 

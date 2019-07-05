@@ -85,6 +85,7 @@
     		var username = $("#username").val();
             var password = $("#password").val();
             var identity = $("#user").val();
+            alert(username+password+identity);
             if (username == '') {
                 $('#username').attr('placeholder', "请输入手机号或邮箱");
                 $('#username').addClass("change");

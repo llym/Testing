@@ -1,5 +1,11 @@
 package com.test.dao;
 
-public interface BorrowDao {
+import java.util.List;
 
+import com.test.entity.Borrow;
+
+public interface BorrowDao {
+public List<Borrow> getBorrow(String bookname);
+	
+public List<Borrow> findBorrow(String bookname);
 }

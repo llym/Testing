@@ -17,24 +17,36 @@ public class UserServiceImpl implements UserService{
 	UserDao userDao;
 	
 	@Override
-	public String findUserService(String username, String password,HttpSession session) {
+	public String findUserService(String username, String password,String status,HttpSession session) {
 		
 		try {
 			User user=userDao.findUser(username);
 			String a=user.getUsername();
 			String b=user.getPassword();
+			String c=user.getLevel();
 			System.out.println(a);
 			System.out.println(b);
 		if (user!=null) {
 			if (a.equals(username)&&b.equals(password)) {
-				session.setAttribute("username", username);
-				return "登录成功";
+				if(c.equals(status)) {
+					if(c.equals("1")) {
+						session.setAttribute("username", username);
+						return "firstPage.jsp";
+					}
+					else {
+						return "login.jsp";
+					}
+					
+					
+				}
+				else
+					return "login.jsp";
 			}
 			else {
-				return "密码错误";
+				return "login.jsp";
 			}
 		}
-		return "账号错误";
+		return "login.jsp";
 		}
 		catch(Exception e){
 		return "账号错误";	
