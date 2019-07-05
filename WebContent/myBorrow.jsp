@@ -31,23 +31,31 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
   <div class="container-fluid" style="margin-top:0px;height: 600px;">
     <div class="row">
       <div class="col-sm-2" style="color:darkgrey">
-        <ul class="nav nav-pills flex-column">
+        <nav class="navbar">
+        <ul class="nav nva-tabs" role="tablist">
           <li class="nav-item">
             <a class="nav-link" href="#">菜单项MENU</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">图书借阅</a>
+            <a class="nav-link" data-toggle="tab" href="#bookBorrow">图书借阅</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">我的借阅</a>
+            <a class="nav-link" data-toggle="tab" href="#myBorrow">我的借阅</a>
           </li>
         </ul>
+    </nav>
         <hr class="d-sm-none">
       </div>
       <div class="col-sm-10">
-        <div class="mt-4" style="height: 50px;"><img style="height:20px;width: 20px;" src="common/image/home.png">
+        <div class="tab-content">
+                <div class="mt-2 container tab-pane active" id="bookBorrow" style="height: 50px;"><img style="height:20px;width: 20px;" src="common/image/home.png">
+                    <span>图书借阅</span>
+                    </div>
+        <div class="mt-2 container tab-pane" id="myBorrow" style="height: 50px;"><img style="height:20px;width: 20px;" src="common/image/home.png">
             <span>我的借阅</span>
-            </div>
+        </div>
+        </div>
+        
             <div style="height: 800px;width: 600px;"></div>
       </div>
     </div>
