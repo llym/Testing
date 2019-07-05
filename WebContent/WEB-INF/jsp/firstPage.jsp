@@ -33,17 +33,6 @@ function edit(){
 		alert("add");
 	}
 
-	function find(){
-		var ser = $("#nameForQuery").val()
-		alert("search:"+ser);
-		$.post("search.do",{
-			search:ser
-		},function(data,status){
-			
-		});
-		
-		
-	}
 
 
 </script>
@@ -82,14 +71,14 @@ function edit(){
             <div>
             <divclass="mb-5"><img style="height:20px;weight:20px;" src="common/image/home.png"> 借阅历史
             </div>
-             <form role ="form" class="form-inline" id="billQueryForm">
+             <form role ="form" class="form-inline" id="billQueryForm" action="search.do" methon="post">
 				<div class = "form-group m-auto">
 				<button id="addBook" name="addBook" class ="btn btn-info btn-sm m-1" type="button" onclick="add()">新增图书</button> 
 				
 					<span>图书名称：</span> <input id="nameForQuery" name="nameForQuery" type="text" class="form-control m-1"
 						placeholder="请输入图书名称" /> 
 					<button id="queryBook" name="queryBook" 
-						class ="btn btn-info btn-sm m-1" type="button" onclick="find()">查询</button> 
+						class ="btn btn-info btn-sm m-1" type="submit">查询</button> 
 				</div>
 		</form>
             

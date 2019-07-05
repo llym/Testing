@@ -60,8 +60,8 @@ public class TestController {
 
 		//查询指令
 	    @RequestMapping("/search.do")
-	    public ModelAndView s(String search){
-			String a=search;
+	    public ModelAndView s(String nameForQuery){
+			String a=nameForQuery;
 			System.out.println(a);
 			List<Book> list = bookService.findBookService(a);
 			System.out.println(list);
