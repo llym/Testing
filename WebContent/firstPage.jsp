@@ -75,7 +75,8 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 			<ul class="pagination">
 				<c:choose>
 					<c:when test="${pages == 1}">
-      					 <li class="disabled page-item"><a class="page-link" id="previousPage"
+      				<form class="form-inline">	
+      					<li class="disabled page-item"><a class="page-link" id="previousPage"
 							href="#">上一页</a>
 						</li>
 						<li class="disabled page-item"><a class="page-link"
@@ -90,8 +91,10 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 						<li class="page-item disabled"><a class="page-link" id="nextPage"
 							href="#">下一页</a>
 						</li>
+      				</form>	
     				</c:when>
 					<c:when test="${currentPage == 0}">
+					<form class="form-inline">
       					 <li class="disabled page-item"><a class="page-link" id="previousPage"
 							href="#">上一页</a>
 						</li>
@@ -108,8 +111,10 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 							href="billList?pageAdd=1&currentPage=${currentPage}">下一页</a>
 							<%--  --%>
 						</li>
+					</form>
     				</c:when>
 					<c:when test="${currentPage eq (pages-1)}">
+					<form class="form-inline">
     					<li class="page-item"><a class="page-link" id="previousPage"
 							href="billList?pageAdd=-1&currentPage=${currentPage}">上一页</a>
 							<!--  -->
@@ -126,8 +131,10 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 						<li class="page-item disabled"><a class="page-link" id="nextPage"
 							>下一页</a>
 						</li>
+					</form>
     				</c:when>
 					<c:otherwise>
+					<form class="form-inline">
 						<li class="page-item"><a class="page-link" id="previousPage"
 							href="billList?pageAdd=-1&currentPage=${currentPage}">上一页</a>
 							<!--  -->
@@ -145,6 +152,7 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 							href="billList?pageAdd=1&currentPage=${currentPage}">下一页</a>
 							<%--  --%>
 						</li>
+						</form>
    					 </c:otherwise>
 				</c:choose>
 			</ul>
