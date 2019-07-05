@@ -40,6 +40,7 @@ public class TestController {
 	//显示图书列表
 		@RequestMapping("/success.do")
 		public ModelAndView play() {
+			System.out.println("play");
 			List<Book> list = bookService.getBookService("");
 			System.out.println(list);
 			ModelAndView mav =new ModelAndView("firstPage");
@@ -58,14 +59,15 @@ public class TestController {
 		}
 
 		//查询指令
-	    @RequestMapping("/hello.do")
-	    public ModelAndView s(Model model,@RequestParam("searc") String s){
-			String a=s;
+	    @RequestMapping("/search.do")
+	    public ModelAndView s(String search){
+			String a=search;
 			System.out.println(a);
 			List<Book> list = bookService.findBookService(a);
 			System.out.println(list);
-			ModelAndView mav =new ModelAndView("firstPag");
+			ModelAndView mav =new ModelAndView("firstPage");
 			mav.addObject("books",list);
+			System.out.println("2");
 			return mav;
 	    }
 }
