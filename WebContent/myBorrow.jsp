@@ -49,10 +49,10 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
       <div class="col-sm-10">
         <div class="tab-content">
                 <div class="mt-2 container tab-pane active" id="bookBorrow" style="height: 50px;"><img style="height:20px;width: 20px;" src="common/image/home.png">
-                    <span>图书借阅</span>
+                    <span>图书借阅</span><p>11111</p>
                     </div>
         <div class="mt-2 container tab-pane" id="myBorrow" style="height: 50px;"><img style="height:20px;width: 20px;" src="common/image/home.png">
-            <span>我的借阅</span>
+            <span>我的借阅</span><p>22222</p>
         </div>
         </div>
         
