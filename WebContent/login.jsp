@@ -140,6 +140,7 @@
 <body background="common/image/bg.jpg">
     <div class="container-fluid" align="center">
         <div class="logo">
+        	<input type="image" src="common/image/logo1.png">
             <h1 class="text-primary">图书馆管理员系统</h1><br />
             <h3 class="text-primary">LIBRARY MANAGEMENT SYSTEM</h3>
             <form class="mt-5">
