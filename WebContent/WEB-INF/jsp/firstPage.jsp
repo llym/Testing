@@ -67,11 +67,12 @@ function edit(){
             </ul>
             <hr class="d-sm-none">
           </div>
+          
           <div class="col-sm-10">
             <div>
             <divclass="mb-5"><img style="height:20px;weight:20px;" src="common/image/home.png"> 借阅历史
             </div>
-             <form role ="form" class="form-inline" id="billQueryForm" action="search.do" methon="post">
+             <form role ="form" class="form-inline" id="billQueryForm" action="search.do" method="post">
 				<div class = "form-group m-auto">
 				<button id="addBook" name="addBook" class ="btn btn-info btn-sm m-1" type="button" onclick="add()">新增图书</button> 
 				
