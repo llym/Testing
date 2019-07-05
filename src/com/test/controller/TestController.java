@@ -16,6 +16,7 @@ import com.test.service.BookService;
 import com.test.service.BorrowService;
 import com.test.service.UserService;
 import com.test.entity.Book;
+import com.test.entity.Borrow;
 
 @Controller
 public class TestController {
@@ -43,5 +44,13 @@ public class TestController {
 			mav.addObject("books",list);
 			return mav;
 		}
-	
+		@RequestMapping("/borrow.do")
+		public ModelAndView borrow() {
+			List<Borrow> list = borrowService.getBorrowService("");
+			System.out.println(list);
+			ModelAndView mav =new ModelAndView("adminHistory");
+			mav.addObject("historys",list);
+			return mav;
+		}
+		
 }
