@@ -7,9 +7,9 @@ public class Book {
 
 	    private String author;
 
-	    private String press;
+	    private String press;//出版社
 	    
-	    private String inventory;//出版社
+	    private String inventory;//库存
 	    
 	    private String status;
 
