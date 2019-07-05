@@ -42,7 +42,7 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
             <hr class="d-sm-none">
           </div>
           <div class="col-sm-10">
-            <div><h6>图书管理</h6></div>
+            <div><h6 >图书管理</h6></div>
           </div>
         </div>
       </div>
