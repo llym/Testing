@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService{
 				if(c.equals(status)) {
 					if(c.equals("1")) {
 						session.setAttribute("username", username);
-						return "firstPage.jsp";
+						return "success.do";
 					}
 					else {
 						return "login.jsp";
