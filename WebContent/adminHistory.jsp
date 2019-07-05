@@ -47,8 +47,43 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
         <hr class="d-sm-none">
       </div>
       <div class="col-sm-10">
-        <div class="mb-5"><img style="height:20px;width: 20px;" src="common/image/home.png"> 图书管理
-            </div>
+        <div class="mb-5"><img style="height:20px;width: 20px;" src="common/image/home.png"> 借阅历史
+        </div>
+         
+         <form role ="form" class="form-inline" action="queryBill" method="post" id="billQueryForm">
+				<div class = "form-group m-auto">
+					<span>图书名称：</span> <input id="nameForQuery" name="nameForQuery" type="text" class="form-control m-1"
+						placeholder="请输入图书名称" /> 
+					<button id="queryBook" name="queryBook" 
+						class ="btn btn-info btn-sm m-1" type="submit">查询</button> 
+				</div>
+		</form>
+		
+		<table id="historyTable"
+				class="table table-condensed table-hover table-striped">
+				<tr>
+					<th>图书名称</th>
+					<th>出版设</th>
+					<th>作者</th>
+					<th>借阅人学号</th>
+					<th>借阅人姓名</th>
+					<th>借阅时间</th>
+					<th>归还时间</th>
+				</tr>
+				<c:forEach items="${historys}" var="b" varStatus="st"
+					begin="${currentPage*10}" end="${(currentPage+1)*10-1}">
+					<tr>
+						<td>${b.bookname}</td>
+						<td>${b.press}</td>
+						<td>${b.author}</td>
+						<td>${b.studynumb}</td>
+						<td>${b.name}</td>
+						<td>${b.borrowtime}</td>
+						<td>${b.returntime}</td>
+						
+					</tr>
+				</c:forEach>
+			</table>
       </div>
     </div>
   </div>
