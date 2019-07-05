@@ -38,10 +38,10 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
             <a class="nav-link" href="#">菜单项MENU</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">图书管理</a>
+            <a class="nav-link" href="success.do">图书管理</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">借阅记录</a>
+            <a class="nav-link" href="borrow.do">借阅记录</a>
           </li>
         </ul>
         <hr class="d-sm-none">

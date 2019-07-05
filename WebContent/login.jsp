@@ -80,12 +80,11 @@
 
     <script>
     $(function(){ 
-    	　　
     	$("#login").click(function(){
     		var username = $("#username").val();
             var password = $("#password").val();
             var identity = $("#user").val();
-            alert(username+password+identity);
+          
             if (username == '') {
                 $('#username').attr('placeholder', "请输入手机号或邮箱");
                 $('#username').addClass("change");
@@ -106,7 +105,18 @@
                     url: "login.do",
                     data: { "username": username,"password":password,"status":status },
                     success: function (result) {
+                    	
+                    	if(result=="success.do"){
                     		window.location.href=result;
+                    	}
+                    	else if(result=="myBorrow.jsp"){
+                    		window.location.href=result;
+                    	}
+                    	else{
+                    		alert(result);
+                    		window.location.href="login.jsp";
+                    	}
+                    	
                     }
                 });
             }

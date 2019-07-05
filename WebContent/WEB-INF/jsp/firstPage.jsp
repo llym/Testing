@@ -15,6 +15,25 @@ integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5K
 integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" 
 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="common/tool/layui/layui.js"></script>
+<script src="common/tool/layui/css/layui.css"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script>
+function edit(){
+    $("[name='testname']").val("xxxxxxxxxxxxxxx");//向模态框中赋值
+        layui.use(['layer'], function () {
+            var layer = layui.layer, $ = layui.$;
+            layer.open({
+                type: 1,//类型
+                area: ['500px', '400px'],//定义宽和高
+                title: false,//题目
+                shadeClose: false,//点击遮罩层关闭
+                content: $('#edit')//打开的内容
+            });
+        })
+}
+</script>
 <title>图书管理系统首页</title>
 </head>
 <body>      
@@ -38,7 +57,7 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
                 <a class="nav-link active" href="#">菜单项MENU</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">图书管理</a>
+                <a class="nav-link" href="success.do">图书管理</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="borrow.do">借阅记录</a>
@@ -67,7 +86,7 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 						<td>${b.author}</td>
 						<td>${b.inventory}</td>
 						<td>
-						 	<a href="updateBook?bookId=${b.id}">编辑</a>
+						 	<a href="#" onclick="edit()">编辑 </a>
 						 	<a href="deleteBook?bookId=${b.id}" id="deleteBill">删除</a>
 						</td>
 					</tr>
@@ -163,6 +182,16 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
           </div>
         </div>
       </div>
-       
+       <div id="edit" style="display:none">
+      <h3>编辑图书</h3>
+      <hr/>
+      <p><span>图书名称:</span><input type="text" class="form-control" id="name" style="width:300px;margin-left:50px;"/></p>
+      出版社:<input type="text" class="form-control" id="publisher" style="width:300px;margin-left:50px;"/>
+      作者:<input type="text"  class="form-control" id="author" style="width:300px;margin-left:50px;"/>
+      库存:<input type="text"  class="form-control" id="num" style="width:300px;margin-left:50px;"/> 
+      <button type="button"  class="btn btn-sm mt-2" onclick="cancel()" style="float:right;margin-right:50px;">取消</button>
+      <button type="button" class="btn btn-primary btn-sm mt-2" onclick="save()" style="float:right">保存</button>
+
+  </div> 
 </body>
 </html>

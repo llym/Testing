@@ -34,19 +34,19 @@ public class UserServiceImpl implements UserService{
 						return "success.do";
 					}
 					else {
-						return "login.jsp";
+						return "myBorrow.jsp";
 					}
 					
 					
 				}
 				else
-					return "login.jsp";
+					return "身份不匹配";
 			}
 			else {
-				return "login.jsp";
+				return "密码错误";
 			}
 		}
-		return "login.jsp";
+		return "密码错误";
 		}
 		catch(Exception e){
 		return "账号错误";	
