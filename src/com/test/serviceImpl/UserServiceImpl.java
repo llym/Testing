@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService{
 		
 		try {
 			User user=userDao.findUser(username);
-			String a=user.getUserid();
+			String a=user.getUsername();
 			String b=user.getPassword();
 			System.out.println(a);
 			System.out.println(b);
