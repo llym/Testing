@@ -20,7 +20,7 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
         <img  class="ml-2" src="common/image/logo.jpg">
         <div style="margin-left: 880px">
       <button>
-        <img style="height: 20px;width: 20px;" src="common/image/user.png">admin管理员
+        <img style="height: 20px;width: 20px;" src="common/image/user.png">${username}管理员
       </button>
       <button>
         <img style="height: 20px;width: 20px;border-left:1px #00FF66" src="common/image/poweroff.png">退出
@@ -39,14 +39,14 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
                 <a class="nav-link" href="#">图书管理</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">借阅记录</a>
+                <a class="nav-link" href="adminHistory.jsp">借阅记录</a>
               </li>
             </ul>
             <hr class="d-sm-none">
           </div>
           <div class="col-sm-10">
             <div>
-            <divclass="mb-5"><img style="height:20px;weight:20px;" src="common/image/home.png"> 图书管理
+            <divclass="mb-5"><img style="height:20px;weight:20px;" src="common/image/home.png"> 借阅历史
             </div>
             <table id="bookTable"
 				class="table table-condensed table-hover table-striped">
@@ -75,23 +75,23 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 			<ul class="pagination">
 				<c:choose>
 					<c:when test="${pages == 1}">
-      				<form class="form-inline">	
-      					<li class="disabled page-item"><a class="page-link" id="previousPage"
-							href="#">上一页</a>
-						</li>
-						<li class="disabled page-item"><a class="page-link"
-							href="#">首页</a>
-						</li>
-						<li class="disabled page-item"><a class="page-link"
-							href="#">第${currentPage+1}页,共${pages}页</a>
-						</li>
-						<li class="disabled page-item"><a class="page-link"
-							href="#">尾页</a>
-						</li>
-						<li class="page-item disabled"><a class="page-link" id="nextPage"
-							href="#">下一页</a>
-						</li>
-      				</form>	
+	      				<form class="form-inline">	
+	      					<li class="disabled page-item"><a class="page-link" id="previousPage"
+								href="#">上一页</a>
+							</li>
+							<li class="disabled page-item"><a class="page-link"
+								href="#">首页</a>
+							</li>
+							<li class="disabled page-item"><a class="page-link"
+								href="#">第${currentPage+1}页,共${pages}页</a>
+							</li>
+							<li class="disabled page-item"><a class="page-link"
+								href="#">尾页</a>
+							</li>
+							<li class="page-item disabled"><a class="page-link" id="nextPage"
+								href="#">下一页</a>
+							</li>
+	      				</form>	
     				</c:when>
 					<c:when test="${currentPage == 0}">
 					<form class="form-inline">

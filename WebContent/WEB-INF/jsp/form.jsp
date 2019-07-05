@@ -7,6 +7,33 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<form role ="form" class="form-inline" action="queryBill" method="post" id="billQueryForm">
+				<div class = "form-group m-auto">
+					<span>商品名称：</span> <input id="nameForQuery" name="nameForQuery" type="text" class="form-control m-1"
+						placeholder="请输入商品的名称" /> 
+					<span>供应商：</span>
+					<select id="suppliers" name = "suppliers"class="form-control m-1">
+					<option value="0">全部</option>
+					<c:forEach items="${suppliers}" var="s" varStatus="st">
+						<option value="${s.id}">${s.name}</option>
+					</c:forEach>
+					</select> 
+					<span>是否付款：</span>
+					<select id="payment" name="payment" class="form-control m-1">
+						<option value="2">不限</option>
+						<option value="1">已付款</option>
+						<option value="0">未付款</option>
+					</select>
+					<button id="billQuery" name="billQuery" 
+						data-toggle="popover" title="提示：" data-content="请输入查询条件"
+						class ="btn btn-info btn-sm m-1" type="submit">查询</button> 
+				</div>
+				<a href="billAdd" class="btn btn-info btn-sm m-auto">
+         		 <span class="glyphicon glyphicon-plus"></span> 添加账单
+       		 	</a>
+			</form>
+
 	<table id="bookTable"
 				class="table table-condensed table-hover table-striped">
 				<tr>
