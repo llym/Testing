@@ -1,5 +1,7 @@
 package com.test.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.test.entity.Book;
 import com.test.entity.Borrow;
+import com.test.entity.User;
 import com.test.service.BookService;
 import com.test.service.BorrowService;
 import com.test.service.UserService;
@@ -34,6 +37,14 @@ public class FunctionController {
 	    public ModelAndView sear(String nameForQuery){
 			List<Book> list = bookService.findBookService(nameForQuery);
 			ModelAndView mav =new ModelAndView("firstPage");
+			mav.addObject("books",list);
+			return mav;
+	    }
+	   //学生图书查询指令
+	    @RequestMapping("/ssearch.do")
+	    public ModelAndView ssear(String nameForQuery){
+			List<Book> list = bookService.findBookService(nameForQuery);
+			ModelAndView mav =new ModelAndView("studentfirst");
 			mav.addObject("books",list);
 			return mav;
 	    }
@@ -85,4 +96,33 @@ public class FunctionController {
 	    	bookService.insertBookService(book);
 			return "1";
 		}
+	    
+	    //借阅指令
+	    @RequestMapping("/borrowbook.do")
+	    public ModelAndView bor(Model model,@RequestParam("bor") String id,HttpServletRequest request){
+	    	String name=(String) request.getSession().getAttribute("username");
+	    	User user = userService.findUseridService(name);
+	    	String a=user.getName();
+	    	String b=user.getStudynumb();
+	    	Book book = bookService.findBookidService(Integer.decode(id));
+	    	String c=book.getBookname();
+	    	String d=book.getAuthor();
+	    	String e=book.getPress();
+	    	Date date = new Date();
+	    	Borrow borrow = new Borrow();
+	    	borrow.setBookname(c);
+	    	borrow.setBorrowtime(date);
+	    	borrow.setAuthor(d);
+	    	borrow.setPress(e);
+	    	borrow.setStudynumb(b);
+	    	borrow.setName(a);
+	    	borrow.setBorrowtime(date);
+	    	borrowService.insertBorrowService(borrow);
+			List<Book> list = bookService.getBookService("");
+			ModelAndView mav =new ModelAndView("redirect:/student.do");
+			mav.addObject("books",list);
+			return mav;
+	    }
+	    
+	    
 }

@@ -19,4 +19,6 @@ public interface BookService {
 	public List<Book> getCurrPageBook(Map<String, Object> map);
 
 	public int getRecordNum();
+	
+	public Book findBookidService(Integer id);
 }

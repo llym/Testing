@@ -110,7 +110,7 @@
                     	if(result=="success.do"){
                     		window.location.href=result;
                     	}
-                    	else if(result=="myBorrow.jsp"){
+                    	else if(result=="student.do"){
                     		window.location.href=result;
                     	}
                     	else{

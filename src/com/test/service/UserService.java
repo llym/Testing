@@ -12,4 +12,6 @@ public interface UserService {
 	public String insertUserService(User user);
 
 	public String checkTelnumService(User user);
+	
+	public User findUseridService(String username);
 }

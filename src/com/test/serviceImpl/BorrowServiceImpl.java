@@ -3,19 +3,27 @@ package com.test.serviceImpl;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.dao.BookDao;
 import com.test.dao.BorrowDao;
+import com.test.dao.UserDao;
+import com.test.entity.Book;
 import com.test.entity.Borrow;
+import com.test.entity.User;
 import com.test.service.BorrowService;
 
 @Service("BorrowService")
 public class BorrowServiceImpl implements BorrowService{
 	@Autowired
 	BorrowDao borrowdao;
-	
+	@Autowired
+	UserDao userDao;
+	@Autowired
+	BookDao bookdao;
 	@Override
 	public List<Borrow> getBorrowService(String bookname) {
 		// TODO Auto-generated method stub
@@ -38,6 +46,12 @@ public class BorrowServiceImpl implements BorrowService{
 	public List<Borrow> getCurrPageBorrow(Map<String, Object> map) {
 		
 		return borrowdao.getCurrPageBorrow(map);
+	}
+
+	@Override
+	public void insertBorrowService(Borrow borrow) {
+		// TODO Auto-generated method stub
+		borrowdao.insertBorrow(borrow);
 	}
 
 }

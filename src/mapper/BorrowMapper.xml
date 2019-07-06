@@ -14,4 +14,9 @@
 <select id="getCurrPageBorrow" parameterType="map" resultType="com.test.entity.Borrow">
 		select * from borrow where  status ='1'limit #{currIndex},#{pageSize}
 </select>
+
+<insert id="insertBorrow" parameterType="com.test.entity.Borrow" useGeneratedKeys="true">
+		insert into borrow(bookname,author,press,studynumb,name,borrowtime,status) VALUES (#{bookname},#{author},#{press},#{studynumb},#{name},#{borrowtime},"1")
+</insert>
+
 </mapper>

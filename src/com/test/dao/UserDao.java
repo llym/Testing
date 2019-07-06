@@ -9,4 +9,6 @@ public interface UserDao {
 
 	public User checkTelnum(User user);
 	
+	public User findUserid(Integer id);
+	
 }

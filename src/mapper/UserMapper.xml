@@ -6,5 +6,7 @@
 <select id="findUser" parameterType="String" resultType="com.test.entity.User">
 		select * from user where username=#{username} and status="1"
 	</select>
-	
+	<select id="findUserid" parameterType="Integer" resultType="com.test.entity.User">
+		select * from user where Id=#{id} and status="1"
+	</select>
 </mapper>

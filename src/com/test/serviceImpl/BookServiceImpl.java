@@ -57,6 +57,12 @@ public class BookServiceImpl implements BookService{
 		
 		return bookdao.getRecordNum();
 	}
+
+	@Override
+	public Book findBookidService(Integer id) {
+		// TODO Auto-generated method stub
+		return bookdao.findBookid(id);
+	}
 	
 
 }

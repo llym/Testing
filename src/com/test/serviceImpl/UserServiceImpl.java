@@ -34,7 +34,8 @@ public class UserServiceImpl implements UserService{
 						return "success.do";
 					}
 					else {
-						return "myBorrow.jsp";
+						session.setAttribute("username", username);
+						return "student.do";
 					}
 					
 					
@@ -79,5 +80,12 @@ public class UserServiceImpl implements UserService{
 			System.out.println(e.getMessage());
 			return "";
 		}
-	}	
+	}
+
+	@Override
+	public User findUseridService(String username) {
+		// TODO Auto-generated method stub
+		return userDao.findUser(username);
+	}
+
 }

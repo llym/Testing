@@ -19,4 +19,6 @@ public interface BookDao {
 	public List<Book> getAllBook(Map<String, Object> map);
 
 	public int getRecordNum();
+	
+	public Book findBookid(Integer id);
 }

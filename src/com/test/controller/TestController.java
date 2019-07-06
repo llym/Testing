@@ -70,6 +70,36 @@ public class TestController {
 			mav.addObject("pages",pages);
 			return mav;
 		}
+		//显示学生图书列表
+				@RequestMapping("/student.do")
+				public ModelAndView student() {
+					System.out.println("图书管理页");
+					int currentPage = 1;
+					System.out.println(currentPage);
+					int recordNum=bookService.getRecordNum();
+					System.out.println("共"+recordNum);
+					int pageSize = 8;
+					int pages;
+					List<Book> list = new ArrayList<Book>();
+					if(recordNum%pageSize !=0) {
+						pages = recordNum/pageSize +1;
+					}else 
+						pages = recordNum/pageSize;
+					if(currentPage<=pages) {
+						int currIndex = (currentPage -1) *pageSize;
+						Map<String,Object> map = new HashedMap();
+						map.put("currIndex", currIndex);
+						map.put("pageSize", pageSize);
+						list = bookService.getCurrPageBook(map);
+					}
+					
+					ModelAndView mav =new ModelAndView("studentfirst");
+					mav.addObject("recordNum",recordNum);
+					mav.addObject("currentPage",currentPage);
+					mav.addObject("books",list);
+					mav.addObject("pages",pages);
+					return mav;
+				}
 		
 		@RequestMapping("/changePage")
 		public ModelAndView changePage(int pageAdd,int currentPage) {
