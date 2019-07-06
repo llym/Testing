@@ -32,7 +32,11 @@ function edit(){
 	function add(){
 		alert("add");
 	}
-
+	
+	function del(id){
+		alert(id);
+		window.location.href ='delete.do?del='+id;
+	}
 
 
 </script>
@@ -101,7 +105,7 @@ function edit(){
 						<td>${b.inventory}</td>
 						<td>
 						 	<a href="#" onclick="edit()">编辑 </a>
-						 	<a href="deleteBook?bookId=${b.id}" id="deleteBill">删除</a>
+						 	<a href="#" id="deleteBill"  onclick="del(${b.id})">删除</a>
 						</td>
 					</tr>
 				</c:forEach>

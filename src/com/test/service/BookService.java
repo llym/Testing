@@ -10,4 +10,6 @@ public interface BookService {
 	public List<Book> findBookService(String bookname);
 	
 	public void insertBookService(Book book);
+	
+	public void delBookService(Book book);
 }

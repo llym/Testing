@@ -10,4 +10,6 @@ public interface BookDao {
 	public List<Book> findBook(String bookname);
 	
 	public void insertBook(Book book);
+	
+	public void delBook(Book book);
 }
