@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.entity.Book;
+import com.test.entity.Borrow;
 import com.test.service.BookService;
 import com.test.service.BorrowService;
 import com.test.service.UserService;
@@ -28,12 +29,22 @@ public class FunctionController {
 		@Autowired
 		private BorrowService borrowService;
 		
-		//查询指令
+		//图书查询指令
 	    @RequestMapping("/search.do")
 	    public ModelAndView sear(String nameForQuery){
 			List<Book> list = bookService.findBookService(nameForQuery);
 			ModelAndView mav =new ModelAndView("firstPage");
 			mav.addObject("books",list);
+			return mav;
+	    }
+	    
+	    //借阅查询指令
+	    @RequestMapping("/find.do")
+	    public ModelAndView find(String nameForQuery){
+	    	System.out.println(nameForQuery);
+	    	List<Borrow> list = borrowService.findBorrowService(nameForQuery);
+			ModelAndView mav =new ModelAndView("adminHistory");
+			mav.addObject("historys",list);
 			return mav;
 	    }
 	    

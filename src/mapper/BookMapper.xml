@@ -6,7 +6,7 @@
 		select * from book where status="1"
 </select>
 <select id="findBook" parameterType="String" resultType="com.test.entity.Book">
-		select * from book where  bookname like concat('%',#{bookname},'%')
+		select * from book where  bookname like concat('%',#{bookname},'%') and status='1'
 </select>
 <select id="getAllBook" parameterType="map" resultType="com.test.entity.Book">
 		select * from book limit #{currIndex},#{pageSize}

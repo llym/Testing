@@ -50,7 +50,7 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
         <div class="mb-5"><img style="height:20px;width: 20px;" src="common/image/home.png"> 借阅历史
         </div>
          
-         <form role ="form" class="form-inline" action="queryBill" method="post" id="billQueryForm">
+         <form role ="form" class="form-inline" action="find.do" method="post" id="billQueryForm">
 				<div class = "form-group m-auto">
 					<span>图书名称：</span> <input id="nameForQuery" name="nameForQuery" type="text" class="form-control m-1"
 						placeholder="请输入图书名称" /> 
