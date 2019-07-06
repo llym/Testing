@@ -60,22 +60,18 @@ public class FunctionController {
 	    	book.setAuthor(author);
 	    	book.setId(Integer.decode(id));
 	    	bookService.updateBookService(book);
-	    	
 			return "1";
 		}
 	    //插入指令
 	    @RequestMapping("/insert.do")
-		public ModelAndView inert() {
+		public String inert(String name,String press,String author,String num) {
+	    	System.out.println(name+press+author+num);
 	    	Book book = new Book();
-	    	book.setBookname("明天你好");
-	    	book.setAuthor("李明");
-	    	book.setInventory(134);
-	    	book.setPress("早安出版社");
-	    	
+	    	book.setBookname(name);
+        	book.setInventory(Integer.decode(num));
+	    	book.setPress(press);
+	    	book.setAuthor(author);
 	    	bookService.insertBookService(book);
-	    	List<Book> list = bookService.getBookService("");
-			ModelAndView mav =new ModelAndView("firstPage");
-			mav.addObject("books",list);
-			return mav;
+			return "1";
 		}
 }
