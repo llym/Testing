@@ -8,5 +8,8 @@
 <select id="findBook" parameterType="String" resultType="com.test.entity.Book">
 		select * from book where  bookname like concat('%',#{bookname},'%')
 </select>
-	
+<insert id="insertBook" parameterType="com.test.entity.Book" useGeneratedKeys="true">
+		insert into book book(bookname,author,press,inventory,status) VALUES (#{bookname},#{author},#{press},#{inventory},"1")
+</insert>
+
 </mapper>

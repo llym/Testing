@@ -58,16 +58,4 @@ public class TestController {
 			return mav;
 		}
 
-		//查询指令
-	    @RequestMapping("/search.do")
-	    public ModelAndView s(String nameForQuery){
-			String a=nameForQuery;
-			System.out.println(a);
-			List<Book> list = bookService.findBookService(a);
-			System.out.println(list);
-			ModelAndView mav =new ModelAndView("firstPage");
-			mav.addObject("books",list);
-			System.out.println("2");
-			return mav;
-	    }
 }

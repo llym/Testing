@@ -26,6 +26,12 @@ public class BookServiceImpl implements BookService{
 		// TODO Auto-generated method stub
 		return bookdao.findBook(bookname);
 	}
+
+	@Override
+	public void insertBookService(Book book) {
+		// TODO Auto-generated method stub
+		bookdao.insertBook(book);
+	}
 	
 
 }

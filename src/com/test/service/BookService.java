@@ -8,4 +8,6 @@ public interface BookService {
 	public List<Book> getBookService(String bookname);
 	
 	public List<Book> findBookService(String bookname);
+	
+	public void insertBookService(Book book);
 }

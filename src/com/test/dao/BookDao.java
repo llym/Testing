@@ -8,4 +8,6 @@ public interface BookDao {
 	public List<Book> getBook(String bookname);
 	
 	public List<Book> findBook(String bookname);
+	
+	public void insertBook(Book book);
 }

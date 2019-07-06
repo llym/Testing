@@ -9,7 +9,7 @@ public class Book {
 
 	    private String press;//出版社
 	    
-	    private String inventory;//库存
+	    private Integer inventory;//库存
 	    
 	    private String status;
 
@@ -45,11 +45,11 @@ public class Book {
 			this.press = press;
 		}
 
-		public String getInventory() {
+		public Integer getInventory() {
 			return inventory;
 		}
 
-		public void setInventory(String inventory) {
+		public void setInventory(Integer inventory) {
 			this.inventory = inventory;
 		}
 
