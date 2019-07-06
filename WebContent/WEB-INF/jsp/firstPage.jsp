@@ -15,19 +15,20 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
 <script src="common/tool/layui/layui.js"></script>
 <script src="common/tool/layui/css/layui.css"></script>
 <script>
-function edit(){
-    $("[name='testname']").val("xxxxxxxxxxxxxxx");//向模态框中赋值
-        layui.use(['layer'], function () {
-            var layer = layui.layer, $ = layui.$;
-            layer.open({
-                type: 1,//类型
-                area: ['500px', '400px'],//定义宽和高
-                title: false,//题目
-                shadeClose: false,//点击遮罩层关闭
-                content: $('#edit')//打开的内容
-            });
-        })
-}
+	function edit(id){
+	    $("[name='testname']").val("xxxxxxxxxxxxxxx");//向模态框中赋值
+	        layui.use(['layer'], function () {
+	            var layer = layui.layer, $ = layui.$;
+	            layer.open({
+	                type: 1,//类型
+	                area: ['500px', '400px'],//定义宽和高
+	                title: false,//题目
+	                shadeClose: false,//点击遮罩层关闭
+	                content: $('#edit'+id)//打开的内容
+	                
+	            });
+	        })
+	}
 
 	function add(){
 		alert("add");
@@ -36,6 +37,21 @@ function edit(){
 	function del(id){
 		alert(id);
 		window.location.href ='delete.do?del='+id;
+	}
+	function save(id){
+		var a=$("#name"+id).val();
+		var b=$("#publisher"+id).val();
+		var c=$("#author"+id).val();
+		var d=$("#num"+id).val();
+		alert(id+a+b+c+d);
+		 $.post("update.do",
+				    {
+         	'name':a,
+         	'press':b,
+         	'author':c,
+         	'num':d,
+         	'id':id
+				    });
 	}
 
 
@@ -104,10 +120,22 @@ function edit(){
 						<td>${b.author}</td>
 						<td>${b.inventory}</td>
 						<td>
-						 	<a href="#" onclick="edit()">编辑 </a>
+						 	<a href="#" onclick="edit(${b.id})">编辑 </a>
 						 	<a href="#" id="deleteBill"  onclick="del(${b.id})">删除</a>
 						</td>
 					</tr>
+					 <div id="edit${b.id}" style="display:none">
+      <h3>编辑图书</h3>
+      <hr/>
+      <p><span>图书名称:</span><input value="${b.bookname}" type="text" class="form-control" id="name${b.id}" style="width:300px;margin-left:50px;"/></p>
+      出版社:<input type="text" value="${b.press}" class="form-control" id="publisher${b.id}" style="width:300px;margin-left:50px;"/>
+      作者:<input type="text" value="${b.author}"  class="form-control" id="author${b.id}" style="width:300px;margin-left:50px;"/>
+      库存:<input type="text" value="${b.inventory}"  class="form-control" id="num${b.id}" style="width:300px;margin-left:50px;"/> 
+      <button type="button"  class="btn btn-sm mt-2" onclick="cancel()" style="float:right;margin-right:50px;">取消</button>
+      <button type="button" class="btn btn-primary btn-sm mt-2" onclick="save(${b.id})" style="float:right">保存</button>
+
+  </div> 
+					
 				</c:forEach>
 			</table>
 			
@@ -200,16 +228,6 @@ function edit(){
           </div>
         </div>
       </div>
-       <div id="edit" style="display:none">
-      <h3>编辑图书</h3>
-      <hr/>
-      <p><span>图书名称:</span><input type="text" class="form-control" id="name" style="width:300px;margin-left:50px;"/></p>
-      出版社:<input type="text" class="form-control" id="publisher" style="width:300px;margin-left:50px;"/>
-      作者:<input type="text"  class="form-control" id="author" style="width:300px;margin-left:50px;"/>
-      库存:<input type="text"  class="form-control" id="num" style="width:300px;margin-left:50px;"/> 
-      <button type="button"  class="btn btn-sm mt-2" onclick="cancel()" style="float:right;margin-right:50px;">取消</button>
-      <button type="button" class="btn btn-primary btn-sm mt-2" onclick="save()" style="float:right">保存</button>
-
-  </div> 
+      
 </body>
 </html>

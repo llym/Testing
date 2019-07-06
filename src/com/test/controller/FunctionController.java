@@ -2,6 +2,10 @@ package com.test.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,18 +50,18 @@ public class FunctionController {
 	    }
 	    //修改指令
 	    @RequestMapping("/update.do")
-		public ModelAndView  update() {
+		public String  update(String name,String press,String author,String num,String id) {
+	    	
+	    	System.out.println(name+press+author+num);
 	    	Book book = new Book();
-	    	book.setBookname("好先生");
-	    	book.setInventory(121);
-	    	book.setPress("中国阳光出版社");
-	    	book.setAuthor("李四");
-	    	book.setId(1);
+	    	book.setBookname(name);
+        	book.setInventory(Integer.decode(num));
+	    	book.setPress(press);
+	    	book.setAuthor(author);
+	    	book.setId(Integer.decode(id));
 	    	bookService.updateBookService(book);
-	    	List<Book> list = bookService.getBookService("");
-			ModelAndView mav =new ModelAndView("firstPage");
-			mav.addObject("books",list);
-			return mav;
+	    	
+			return "1";
 		}
 	    //插入指令
 	    @RequestMapping("/insert.do")
