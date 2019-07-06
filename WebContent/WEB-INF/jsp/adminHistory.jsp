@@ -70,8 +70,7 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 					<th>借阅时间</th>
 					<th>归还时间</th>
 				</tr>
-				<c:forEach items="${historys}" var="b" varStatus="st"
-					begin="${currentPage*10}" end="${(currentPage+1)*10-1}">
+				<c:forEach items="${historys}" var="b" varStatus="st">
 					<tr>
 						<td>${b.bookname}</td>
 						<td>${b.press}</td>
@@ -83,10 +82,96 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 						</td>
 						<td>
 						<fmt:formatDate value="${b.returntime}" pattern="yyyy-MM-dd"/></td>
-						
 					</tr>
 				</c:forEach>
 			</table>
+			
+			<form class="form-inline justify-content-end">
+			<span>共${recordNum}条</span>
+			
+			<ul class="pagination">
+				<c:choose>
+					<c:when test="${pages == 1}">
+	      					<li class="disabled page-item"><a class="page-link" id="previousPage"
+								href="#">&lt;</a>
+							</li>
+							<li class="disabled page-item"><a class="page-link"
+								href="#">首页</a>
+							</li>
+							<li class="disabled page-item"><a class="page-link"
+								href="#">第${currentPage}页,共${pages}页</a>
+							</li>
+							<li class="disabled page-item"><a class="page-link"
+								href="#">尾页</a>
+							</li>
+							<li class="page-item disabled"><a class="page-link" id="nextPage"
+								href="#">&gt;</a>
+							</li>
+	      					
+    				</c:when>
+					<c:when test="${currentPage == 1}">
+      					 <li class="disabled page-item"><a class="page-link" id="previousPage"
+							href="#">&lt;</a>
+						</li>
+						<li class="disabled page-item"><a class="page-link"
+							href="#">首页</a>
+						</li>
+						<li class="disabled page-item"><a class="page-link"
+							href="#">第${currentPage}页,共${pages}页</a>
+						</li>
+						<li class="page-item"><a class="page-link"
+							href="changePage2?pageAdd=0&currentPage=${pages}">尾页</a>
+						</li>
+						<li class ="page-item"><a class="page-link" id="nextPage"
+							href="changePage2?pageAdd=1&currentPage=${currentPage}">&gt;</a>
+							<%--  --%>
+						</li>
+					
+    				</c:when>
+					<c:when test="${currentPage eq pages}">
+    					<li class="page-item"><a class="page-link" id="previousPage"
+							href="changePage2?pageAdd=-1&currentPage=${currentPage}">&lt;</a>
+							<!--  -->
+						</li>
+						<li class="page-item"><a class="page-link"
+							href="changePage2?pageAdd=0&currentPage=1">首页</a>
+						</li>
+						<li class="disabled page-item"><a class="page-link"
+							href="#">第${currentPage}页,共${pages}页</a>
+						</li>
+						<li class="disabled page-item"><a class="page-link"
+							href="#">尾页</a>
+						</li>
+						<li class="page-item disabled"><a class="page-link" id="nextPage"
+							>&gt;</a>
+						</li>
+    				</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link" id="previousPage"
+							href="changePage2?pageAdd=-1&currentPage=${currentPage}">&lt;</a>
+							<!--  -->
+						</li>
+						<li class="page-item"><a class="page-link"
+							href="changePage2?pageAdd=0&currentPage=1">首页</a>
+						</li>
+						<li class="disabled page-item"><a class="page-link"
+							href="#">第${currentPage}页,共${pages}页</a>
+						</li>
+						<li class="page-item"><a class="page-link"
+							href="changePage2?pageAdd=0&currentPage=${pages}">尾页</a>
+						</li>
+						<li class="page-item"><a class="page-link" id="nextPage"
+							href="changePage2?pageAdd=1&currentPage=${currentPage}">&gt;</a>
+							<%--  --%>
+						</li>
+   					 </c:otherwise>
+				</c:choose>
+			</ul>
+			
+			
+			
+			</form>
+			
       </div>
     </div>
   </div>

@@ -6,8 +6,12 @@
 		select * from borrow where status="1"
 </select>
 <select id="findBorrow" parameterType="String" resultType="com.test.entity.Borrow">
-		select * from borrow where  bookname like concat('%',#{bookname},'%')
+		select * from borrow where  bookname like concat('%',#{bookname},'%') and status='1'
 </select>
-
-	
+<select id="getRecordNum"  resultType="int">
+		select count(*) from borrow where status="1"
+</select>
+<select id="getCurrPageBorrow" parameterType="map" resultType="com.test.entity.Borrow">
+		select * from borrow where  status ='1'limit #{currIndex},#{pageSize}
+</select>
 </mapper>

@@ -104,10 +104,33 @@ public class TestController {
 		//显示借阅列表
 		@RequestMapping("/borrow.do")
 		public ModelAndView borrow() {
-			List<Borrow> list = borrowService.getBorrowService("");
+			System.out.println("管理借阅");
+			int currentPage=1;
+			int recordNum = borrowService.getRecordNum();
+			int pageSize = 3;
+			int pages;
+			List<Borrow> list = new ArrayList<Borrow>();
+			if(recordNum%pageSize !=0) {
+				pages = recordNum/pageSize +1;
+			}else 
+				pages = recordNum/pageSize;
+			if(currentPage<=pages) {
+				int currIndex = (currentPage -1) *pageSize;
+				Map<String,Object> map = new HashedMap();
+				map.put("currIndex", currIndex);
+				map.put("pageSize", pageSize);
+				list = borrowService.getCurrPageBorrow(map);
+			}
+			
+			
+			
+			
 			
 			System.out.println(list);
 			ModelAndView mav =new ModelAndView("adminHistory");
+			mav.addObject("recordNum",recordNum);
+			mav.addObject("currentPage",currentPage);
+			mav.addObject("pages",pages);
 			mav.addObject("historys",list);
 			return mav;
 		}

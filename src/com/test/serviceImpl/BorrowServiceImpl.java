@@ -1,6 +1,7 @@
 package com.test.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,18 @@ public class BorrowServiceImpl implements BorrowService{
 	public List<Borrow> findBorrowService(String bookname) {
 		// TODO Auto-generated method stub
 		return borrowdao.findBorrow(bookname);
+	}
+
+	@Override
+	public int getRecordNum() {
+		
+		return borrowdao.getRecordNum();
+	}
+
+	@Override
+	public List<Borrow> getCurrPageBorrow(Map<String, Object> map) {
+		
+		return borrowdao.getCurrPageBorrow(map);
 	}
 
 }
