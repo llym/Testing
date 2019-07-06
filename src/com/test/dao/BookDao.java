@@ -12,4 +12,6 @@ public interface BookDao {
 	public void insertBook(Book book);
 	
 	public void delBook(Book book);
+	
+	public void updateBook(Book book);
 }

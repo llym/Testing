@@ -12,4 +12,6 @@ public interface BookService {
 	public void insertBookService(Book book);
 	
 	public void delBookService(Book book);
+	
+	public void updateBookService(Book book);
 }

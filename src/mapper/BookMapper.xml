@@ -9,10 +9,13 @@
 		select * from book where  bookname like concat('%',#{bookname},'%')
 </select>
 <insert id="insertBook" parameterType="com.test.entity.Book" useGeneratedKeys="true">
-		insert into book book(bookname,author,press,inventory,status) VALUES (#{bookname},#{author},#{press},#{inventory},"1")
+		insert into book(bookname,author,press,inventory,status) VALUES (#{bookname},#{author},#{press},#{inventory},"1")
 </insert>
 <update id="delBook" parameterType="com.test.entity.Book">
         update book set status="0" where Id=#{id}
+</update>
+<update id="updateBook" parameterType="com.test.entity.Book">
+        update book set bookname=#{bookname},author=#{author},press=#{press},inventory=#{inventory} where Id=#{id}
 </update>
 
 </mapper>
