@@ -1,6 +1,7 @@
 package com.test.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.test.entity.Book;
 
@@ -14,4 +15,8 @@ public interface BookDao {
 	public void delBook(Book book);
 	
 	public void updateBook(Book book);
+
+	public List<Book> getAllBook(Map<String, Object> map);
+
+	public int getRecordNum();
 }

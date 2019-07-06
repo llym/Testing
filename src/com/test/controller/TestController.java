@@ -1,11 +1,14 @@
 package com.test.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,13 +43,64 @@ public class TestController {
 	//显示图书列表
 		@RequestMapping("/success.do")
 		public ModelAndView play() {
-			System.out.println("play");
-			List<Book> list = bookService.getBookService("");
-			System.out.println(list);
+			System.out.println("图书管理页");
+			int currentPage = 1;
+			System.out.println(currentPage);
+			int recordNum=bookService.getRecordNum();
+			System.out.println("共"+recordNum);
+			int pageSize = 8;
+			int pages;
+			List<Book> list = new ArrayList<Book>();
+			if(recordNum%pageSize !=0) {
+				pages = recordNum/pageSize +1;
+			}else 
+				pages = recordNum/pageSize;
+			if(currentPage<=pages) {
+				int currIndex = (currentPage -1) *pageSize;
+				Map<String,Object> map = new HashedMap();
+				map.put("currIndex", currIndex);
+				map.put("pageSize", pageSize);
+				list = bookService.getCurrPageBook(map);
+			}
+			
 			ModelAndView mav =new ModelAndView("firstPage");
+			mav.addObject("recordNum",recordNum);
+			mav.addObject("currentPage",currentPage);
+			mav.addObject("books",list);
+			mav.addObject("pages",pages);
+			return mav;
+		}
+		
+		@RequestMapping("/changePage")
+		public ModelAndView changePage(int pageAdd,int currentPage) {
+			System.out.println("图书管理页");
+			currentPage+=pageAdd;
+			System.out.println(currentPage);
+			int recordNum=bookService.getRecordNum();
+			System.out.println("共"+recordNum);
+			int pageSize = 8;
+			int pages;
+			List<Book> list = new ArrayList<Book>();
+			if(recordNum%pageSize !=0) {
+				pages = recordNum/pageSize +1;
+			}else 
+				pages = recordNum/pageSize;
+			if(currentPage<=pages) {
+				int currIndex = (currentPage -1) *pageSize;
+				Map<String,Object> map = new HashedMap();
+				map.put("currIndex", currIndex);
+				map.put("pageSize", pageSize);
+				list = bookService.getCurrPageBook(map);
+			}
+			
+			ModelAndView mav =new ModelAndView("firstPage");
+			mav.addObject("recordNum",recordNum);
+			mav.addObject("currentPage",currentPage);
+			mav.addObject("pages",pages);
 			mav.addObject("books",list);
 			return mav;
 		}
+		
 		//显示借阅列表
 		@RequestMapping("/borrow.do")
 		public ModelAndView borrow() {

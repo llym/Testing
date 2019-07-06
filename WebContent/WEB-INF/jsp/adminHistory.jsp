@@ -78,8 +78,11 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
 						<td>${b.author}</td>
 						<td>${b.studynumb}</td>
 						<td>${b.name}</td>
-						<td>${b.borrowtime}</td>
-						<td>${b.returntime}</td>
+						<td>
+						<fmt:formatDate value="${b.borrowtime}" pattern="yyyy-MM-dd"/>
+						</td>
+						<td>
+						<fmt:formatDate value="${b.returntime}" pattern="yyyy-MM-dd"/></td>
 						
 					</tr>
 				</c:forEach>

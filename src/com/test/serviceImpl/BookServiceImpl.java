@@ -1,6 +1,7 @@
 package com.test.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,18 @@ public class BookServiceImpl implements BookService{
 	public void updateBookService(Book book) {
 		// TODO Auto-generated method stub
 		bookdao.updateBook(book);
+	}
+
+	@Override
+	public List<Book> getCurrPageBook(Map<String, Object> map) {
+		
+		return bookdao.getAllBook(map);
+	}
+
+	@Override
+	public int getRecordNum() {
+		
+		return bookdao.getRecordNum();
 	}
 	
 

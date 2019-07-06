@@ -8,6 +8,12 @@
 <select id="findBook" parameterType="String" resultType="com.test.entity.Book">
 		select * from book where  bookname like concat('%',#{bookname},'%')
 </select>
+<select id="getAllBook" parameterType="map" resultType="com.test.entity.Book">
+		select * from book limit #{currIndex},#{pageSize}
+</select>
+<select id="getRecordNum"  resultType="int">
+		select count(*) from book where status="1"
+</select>
 <insert id="insertBook" parameterType="com.test.entity.Book" useGeneratedKeys="true">
 		insert into book(bookname,author,press,inventory,status) VALUES (#{bookname},#{author},#{press},#{inventory},"1")
 </insert>

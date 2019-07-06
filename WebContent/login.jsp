@@ -8,6 +8,7 @@
     
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="common/tool/layui/css/layui.css">
     <script src="common/tool/jquery/jquery.js"> </script>
     <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
@@ -128,12 +129,12 @@
 
 </head>
 
-<body background="common/image/bg.jpg">
+<body background="common/image/bg.png">
     <div class="container-fluid" align="center">
         <div class="logo">
-        	<input type="image" src="common/image/logo1.png">
+        	<input type="image" src="common/image/LOGO.png">
             <h1 class="text-primary">图书馆管理员系统</h1><br />
-            <h3 class="text-primary">LIBRARY MANAGEMENT SYSTEM</h3>
+            <h5 class="text-primary">LIBRARY MANAGEMENT SYSTEM</h3>
             <form class="mt-5">
                 <input type="text" class="input" id="username" placeholder="👨用户名"><br />
                 <input type="password" class="input mt-2" id="password" placeholder="🔒密码" onfocus="this.placeholder=''"
@@ -142,7 +143,7 @@
                     <option>我是管理员</option>
                     <option>我是用户</option>
                 </select>
-                <button type="button" class="btn btn-primary" id="login">登录</button>
+                <button type="button" class="btn" id="login">登录</button>
             </form>
         </div>
     </div>

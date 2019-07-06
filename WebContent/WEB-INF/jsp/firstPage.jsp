@@ -88,11 +88,12 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
             <hr class="d-sm-none">
           </div>
           
-          <div class="col-sm-10">
-            <div>
-            <divclass="mb-5"><img style="height:20px;weight:20px;" src="common/image/home.png"> 借阅历史
+          <div class="col-sm-10 ">
+            <div class="row">
+            <divclass="mb-5"><img style="height:20px;weight:20px;" src="common/image/home.png"> 图书管理
             </div>
-             <form role ="form" class="form-inline" id="billQueryForm" action="search.do" method="post">
+            <div class="row">
+            	<form role ="form" class="form-inline" id="billQueryForm" action="search.do" method="post">
 				<div class = "form-group m-auto">
 				<button id="addBook" name="addBook" class ="btn btn-info btn-sm m-1" type="button" onclick="add()">新增图书</button> 
 				
@@ -101,7 +102,9 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
 					<button id="queryBook" name="queryBook" 
 						class ="btn btn-info btn-sm m-1" type="submit">查询</button> 
 				</div>
-		</form>
+			</form>
+            </div>
+             
             
             <table id="bookTable"
 				class="table table-condensed table-hover table-striped">
@@ -112,8 +115,7 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
 					<th>库存</th>
 					<th>操作</th>
 				</tr>
-				<c:forEach items="${books}" var="b" varStatus="st"
-					begin="${currentPage*10}" end="${(currentPage+1)*10-1}">
+				<c:forEach items="${books}" var="b" varStatus="st">
 					<tr>
 						<td>${b.bookname}</td>
 						<td>${b.press}</td>
@@ -138,96 +140,98 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
 					
 				</c:forEach>
 			</table>
+			<form class="form-inline justify-content-end">
+			<span>共${recordNum}条</span>
 			
 			<ul class="pagination">
 				<c:choose>
 					<c:when test="${pages == 1}">
-	      				<form class="form-inline">	
 	      					<li class="disabled page-item"><a class="page-link" id="previousPage"
-								href="#">上一页</a>
+								href="#">&lt;</a>
 							</li>
 							<li class="disabled page-item"><a class="page-link"
 								href="#">首页</a>
 							</li>
 							<li class="disabled page-item"><a class="page-link"
-								href="#">第${currentPage+1}页,共${pages}页</a>
+								href="#">第${currentPage}页,共${pages}页</a>
 							</li>
 							<li class="disabled page-item"><a class="page-link"
 								href="#">尾页</a>
 							</li>
 							<li class="page-item disabled"><a class="page-link" id="nextPage"
-								href="#">下一页</a>
+								href="#">&gt;</a>
 							</li>
-	      				</form>	
+	      					
     				</c:when>
-					<c:when test="${currentPage == 0}">
-					<form class="form-inline">
+					<c:when test="${currentPage == 1}">
       					 <li class="disabled page-item"><a class="page-link" id="previousPage"
-							href="#">上一页</a>
+							href="#">&lt;</a>
 						</li>
 						<li class="disabled page-item"><a class="page-link"
 							href="#">首页</a>
 						</li>
 						<li class="disabled page-item"><a class="page-link"
-							href="#">第${currentPage+1}页,共${pages}页</a>
+							href="#">第${currentPage}页,共${pages}页</a>
 						</li>
 						<li class="page-item"><a class="page-link"
-							href="billList?pageAdd=0&currentPage=${pages-1}">尾页</a>
+							href="changePage?pageAdd=0&currentPage=${pages}">尾页</a>
 						</li>
 						<li class ="page-item"><a class="page-link" id="nextPage"
-							href="billList?pageAdd=1&currentPage=${currentPage}">下一页</a>
+							href="changePage?pageAdd=1&currentPage=${currentPage}">&gt;</a>
 							<%--  --%>
 						</li>
-					</form>
+					
     				</c:when>
-					<c:when test="${currentPage eq (pages-1)}">
-					<form class="form-inline">
+					<c:when test="${currentPage eq pages}">
     					<li class="page-item"><a class="page-link" id="previousPage"
-							href="billList?pageAdd=-1&currentPage=${currentPage}">上一页</a>
+							href="changePage?pageAdd=-1&currentPage=${currentPage}">&lt;</a>
 							<!--  -->
 						</li>
 						<li class="page-item"><a class="page-link"
-							href="billList?pageAdd=0&currentPage=0">首页</a>
+							href="changePage?pageAdd=0&currentPage=1">首页</a>
 						</li>
 						<li class="disabled page-item"><a class="page-link"
-							href="#">第${currentPage+1}页,共${pages}页</a>
+							href="#">第${currentPage}页,共${pages}页</a>
 						</li>
 						<li class="disabled page-item"><a class="page-link"
 							href="#">尾页</a>
 						</li>
 						<li class="page-item disabled"><a class="page-link" id="nextPage"
-							>下一页</a>
+							>&gt;</a>
 						</li>
-					</form>
     				</c:when>
 					<c:otherwise>
-					<form class="form-inline">
 						<li class="page-item"><a class="page-link" id="previousPage"
-							href="billList?pageAdd=-1&currentPage=${currentPage}">上一页</a>
+							href="changePage?pageAdd=-1&currentPage=${currentPage}">&lt;</a>
 							<!--  -->
 						</li>
 						<li class="page-item"><a class="page-link"
-							href="billList?pageAdd=0&currentPage=0">首页</a>
+							href="changePage?pageAdd=0&currentPage=1">首页</a>
 						</li>
 						<li class="disabled page-item"><a class="page-link"
-							href="#">第${currentPage+1}页,共${pages}页</a>
+							href="#">第${currentPage}页,共${pages}页</a>
 						</li>
 						<li class="page-item"><a class="page-link"
-							href="billList?pageAdd=0&currentPage=${pages-1}">尾页</a>
+							href="changePage?pageAdd=0&currentPage=${pages}">尾页</a>
 						</li>
 						<li class="page-item"><a class="page-link" id="nextPage"
-							href="billList?pageAdd=1&currentPage=${currentPage}">下一页</a>
+							href="changePage?pageAdd=1&currentPage=${currentPage}">&gt;</a>
 							<%--  --%>
 						</li>
-						</form>
    					 </c:otherwise>
 				</c:choose>
 			</ul>
+			
+			
+			
+			</form>
+			
+			
             
             </div>
           </div>
         </div>
-      </div>
+      
       
 </body>
 </html>

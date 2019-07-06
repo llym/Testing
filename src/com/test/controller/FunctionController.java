@@ -44,7 +44,7 @@ public class FunctionController {
 	    	book.setId(Integer.decode(id));
 	    	bookService.delBookService(book);
 			List<Book> list = bookService.getBookService("");
-			ModelAndView mav =new ModelAndView("firstPage");
+			ModelAndView mav =new ModelAndView("redirect:/success.do");
 			mav.addObject("books",list);
 			return mav;
 	    }
