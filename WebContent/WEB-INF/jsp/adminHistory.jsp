@@ -22,7 +22,7 @@ integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCm
     <img  class="ml-2" src="common/image/logo.jpg">
     <div style="margin-left: 880px">
       <button>
-        <img style="height: 20px;width: 20px;" src="common/image/user.png">admin管理员
+        <img style="height: 20px;width: 20px;" src="common/image/user.png">${username}管理员
       </button>
       <button>
         <img style="height: 20px;width: 20px;border-left:1px #00FF66" src="common/image/poweroff.png">退出

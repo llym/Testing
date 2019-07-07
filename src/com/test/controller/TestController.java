@@ -74,7 +74,7 @@ public class TestController {
 		//显示学生图书列表
 				@RequestMapping("/student.do")
 				public ModelAndView student() {
-					System.out.println("图书管理页");
+					System.out.println("图书借阅");
 					int currentPage = 1;
 					System.out.println(currentPage);
 					int recordNum=bookService.getRecordNum();
@@ -104,7 +104,7 @@ public class TestController {
 		
 		@RequestMapping("/changePage")
 		public ModelAndView changePage(int pageAdd,int currentPage) {
-			System.out.println("图书管理页");
+			System.out.println("图书管理换页");
 			currentPage+=pageAdd;
 			System.out.println(currentPage);
 			int recordNum=bookService.getRecordNum();
@@ -163,14 +163,38 @@ public class TestController {
 		
 		
 		//显示借阅列表
-		@RequestMapping("/sborrow.do")
+		@RequestMapping("/sborrow.do")//我的借阅
 		   public ModelAndView find(HttpServletRequest request){
 		    String name=(String) request.getSession().getAttribute("username");
 		    User user = userService.findUseridService(name);
 	    	String a=user.getName();
-		    List<Borrow> list = borrowService.getsBorrowService(a);
+	    	List<Borrow> alllist = borrowService.getsBorrowService(a);
+	    	List<Borrow> pagelist = new ArrayList<Borrow>();
+	    	int recordNum= alllist.size();
+	    	System.out.println("共"+recordNum);
+	    	int currentPage=1;
+			int pageSize = 3;
+			int pages;
+			if(recordNum%pageSize !=0) {
+				pages = recordNum/pageSize +1;
+			}else 
+				pages = recordNum/pageSize;
+			if(currentPage<=pages) {
+				int currIndex = (currentPage -1) *pageSize;
+				for(int i = currIndex; i < pageSize;i++) {
+					pagelist.add(alllist.get(i));
+				}
+				
+			}
+	    	System.out.println(pagelist);
+	    	
+	    	
+		    
 			ModelAndView mav =new ModelAndView("myBorrow");
-			mav.addObject("historys",list);
+			mav.addObject("recordNum",recordNum);
+			mav.addObject("currentPage",currentPage);
+			mav.addObject("pages",pages);
+			mav.addObject("historys",pagelist);
 			return mav;
 		}
 

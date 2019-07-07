@@ -90,7 +90,7 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
 
 
 </script>
-<title>图书管理系统首页</title>
+<title>图书管理系统管理员首页</title>
 </head>
 <body>      
       <nav class="navbar navbar-expand-sm  navbar-dark" style="background-color: #0069A8">

@@ -23,7 +23,7 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
 
 
 </script>
-<title>图书管理系统首页</title>
+<title>图书管理系统学生首页</title>
 </head>
 <body>      
       <nav class="navbar navbar-expand-sm  navbar-dark" style="background-color: #0069A8">
@@ -46,10 +46,10 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
                 <a class="nav-link active" href="#">菜单项MENU</a>
               </li>
               <li class="nav-item">
-               <a class="nav-link" href="student.do">图书管理</a>
+               <a class="nav-link" href="student.do">图书借阅</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="sborrow.do">借阅记录</a>
+            <a class="nav-link" href="sborrow.do">我的借阅</a>
               </li>
             </ul>
             <hr class="d-sm-none">
@@ -127,21 +127,21 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
 							href="#">第${currentPage}页,共${pages}页</a>
 						</li>
 						<li class="page-item"><a class="page-link"
-							href="changePage?pageAdd=0&currentPage=${pages}">尾页</a>
+							href="changePage3?pageAdd=0&currentPage=${pages}">尾页</a>
 						</li>
 						<li class ="page-item"><a class="page-link" id="nextPage"
-							href="changePage?pageAdd=1&currentPage=${currentPage}">&gt;</a>
+							href="changePage3?pageAdd=1&currentPage=${currentPage}">&gt;</a>
 							<%--  --%>
 						</li>
 					
     				</c:when>
 					<c:when test="${currentPage eq pages}">
     					<li class="page-item"><a class="page-link" id="previousPage"
-							href="changePage?pageAdd=-1&currentPage=${currentPage}">&lt;</a>
+							href="changePage3?pageAdd=-1&currentPage=${currentPage}">&lt;</a>
 							<!--  -->
 						</li>
 						<li class="page-item"><a class="page-link"
-							href="changePage?pageAdd=0&currentPage=1">首页</a>
+							href="changePage3?pageAdd=0&currentPage=1">首页</a>
 						</li>
 						<li class="disabled page-item"><a class="page-link"
 							href="#">第${currentPage}页,共${pages}页</a>
@@ -155,28 +155,25 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
     				</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link" id="previousPage"
-							href="changePage?pageAdd=-1&currentPage=${currentPage}">&lt;</a>
+							href="changePage3?pageAdd=-1&currentPage=${currentPage}">&lt;</a>
 							<!--  -->
 						</li>
 						<li class="page-item"><a class="page-link"
-							href="changePage?pageAdd=0&currentPage=1">首页</a>
+							href="changePage3?pageAdd=0&currentPage=1">首页</a>
 						</li>
 						<li class="disabled page-item"><a class="page-link"
 							href="#">第${currentPage}页,共${pages}页</a>
 						</li>
 						<li class="page-item"><a class="page-link"
-							href="changePage?pageAdd=0&currentPage=${pages}">尾页</a>
+							href="changePage3?pageAdd=0&currentPage=${pages}">尾页</a>
 						</li>
 						<li class="page-item"><a class="page-link" id="nextPage"
-							href="changePage?pageAdd=1&currentPage=${currentPage}">&gt;</a>
+							href="changePage3?pageAdd=1&currentPage=${currentPage}">&gt;</a>
 							<%--  --%>
 						</li>
    					 </c:otherwise>
 				</c:choose>
 			</ul>
-			
-			
-			
 			</form>
 			
             
