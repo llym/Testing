@@ -16,4 +16,10 @@ public int getRecordNum();
 public List<Borrow> getCurrPageBorrow(Map<String, Object> map);
 
 public void insertBorrow(Borrow borrow);
+
+public List<Borrow> getsBorrow(String name);
+
+public List<Borrow> findsBorrow(Borrow borrow);
+
+
 }

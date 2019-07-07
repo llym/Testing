@@ -21,4 +21,6 @@ public interface BookService {
 	public int getRecordNum();
 	
 	public Book findBookidService(Integer id);
+	
+	public void reduceBookService(Integer id);
 }

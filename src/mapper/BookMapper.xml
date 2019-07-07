@@ -10,7 +10,7 @@
 </select>
 
 <select id="findBookid" parameterType="Integer" resultType="com.test.entity.Book">
-		select * from book where Id=#{id} and status='1'
+		select * from book where Id=#{id} and status='1' and inventory>0;
 	</select>
 <select id="getAllBook" parameterType="map" resultType="com.test.entity.Book">
 		select * from book limit #{currIndex},#{pageSize}
@@ -27,5 +27,8 @@
 <update id="updateBook" parameterType="com.test.entity.Book">
         update book set bookname=#{bookname},author=#{author},press=#{press},inventory=#{inventory} where Id=#{id}
 </update>
-
+<update id="reduceBook" parameterType="com.test.entity.Book">
+        update book set inventory=inventory-1 where Id=#{id}
+</update>
+ 
 </mapper>

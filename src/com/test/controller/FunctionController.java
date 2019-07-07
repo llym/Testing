@@ -58,6 +58,22 @@ public class FunctionController {
 			mav.addObject("historys",list);
 			return mav;
 	    }
+	    //借阅查询指令
+	    @RequestMapping("/findb.do")
+	    public ModelAndView findb(String nameForQuery,HttpServletRequest request){
+	    	String name=(String) request.getSession().getAttribute("username");
+	    	User user = userService.findUseridService(name);
+	    	String a=user.getName();
+	    	System.out.println(nameForQuery);
+	    	Borrow borrow = new Borrow();
+	    	borrow.setBookname(nameForQuery);
+	    	borrow.setName(a);
+	        List<Borrow> list = borrowService.findsBorrow(borrow);
+	    	//List<Borrow> list = borrowService.findBorrowService(nameForQuery);
+			ModelAndView mav =new ModelAndView("myBorrow");
+			mav.addObject("historys",list);
+			return mav;
+	    }
 	    
 	  //删除指令
 	    @RequestMapping("/delete.do")
@@ -105,19 +121,22 @@ public class FunctionController {
 	    	String a=user.getName();
 	    	String b=user.getStudynumb();
 	    	Book book = bookService.findBookidService(Integer.decode(id));
-	    	String c=book.getBookname();
-	    	String d=book.getAuthor();
-	    	String e=book.getPress();
-	    	Date date = new Date();
-	    	Borrow borrow = new Borrow();
-	    	borrow.setBookname(c);
-	    	borrow.setBorrowtime(date);
-	    	borrow.setAuthor(d);
-	    	borrow.setPress(e);
-	    	borrow.setStudynumb(b);
-	    	borrow.setName(a);
-	    	borrow.setBorrowtime(date);
-	    	borrowService.insertBorrowService(borrow);
+	    	if(book!=null) {
+	    		String c=book.getBookname();
+		    	String d=book.getAuthor();
+		    	String e=book.getPress();
+		    	Date date = new Date();
+		    	Borrow borrow = new Borrow();
+		    	borrow.setBookname(c);
+		    	borrow.setBorrowtime(date);
+		    	borrow.setAuthor(d);
+		    	borrow.setPress(e);
+		    	borrow.setStudynumb(b);
+		    	borrow.setName(a);
+		    	borrow.setBorrowtime(date);
+		    	borrowService.insertBorrowService(borrow);
+		    	bookService.reduceBookService(Integer.decode(id));
+	    	}
 			List<Book> list = bookService.getBookService("");
 			ModelAndView mav =new ModelAndView("redirect:/student.do");
 			mav.addObject("books",list);

@@ -54,4 +54,16 @@ public class BorrowServiceImpl implements BorrowService{
 		borrowdao.insertBorrow(borrow);
 	}
 
+	@Override
+	public List<Borrow> getsBorrowService(String name) {
+		// TODO Auto-generated method stub
+		return borrowdao.getsBorrow(name);
+	}
+
+	@Override
+	public List<Borrow> findsBorrow(Borrow borrow) {
+		// TODO Auto-generated method stub
+		return borrowdao.findsBorrow(borrow);
+	}
+
 }

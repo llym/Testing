@@ -17,4 +17,8 @@ public interface BorrowService {
 	public List<Borrow> getCurrPageBorrow(Map<String, Object> map);
 	
 	public void insertBorrowService(Borrow borrow);
+	
+	public List<Borrow> getsBorrowService(String name);
+	
+	public List<Borrow> findsBorrow(Borrow borrow);
 }

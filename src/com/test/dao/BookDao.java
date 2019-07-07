@@ -21,4 +21,6 @@ public interface BookDao {
 	public int getRecordNum();
 	
 	public Book findBookid(Integer id);
+	
+	public void reduceBook(Integer id);
 }

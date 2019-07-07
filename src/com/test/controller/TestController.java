@@ -22,6 +22,7 @@ import com.test.service.BorrowService;
 import com.test.service.UserService;
 import com.test.entity.Book;
 import com.test.entity.Borrow;
+import com.test.entity.User;
 
 @Controller
 public class TestController {
@@ -151,16 +152,24 @@ public class TestController {
 				map.put("pageSize", pageSize);
 				list = borrowService.getCurrPageBorrow(map);
 			}
-			
-			
-			
-			
-			
 			System.out.println(list);
 			ModelAndView mav =new ModelAndView("adminHistory");
 			mav.addObject("recordNum",recordNum);
 			mav.addObject("currentPage",currentPage);
 			mav.addObject("pages",pages);
+			mav.addObject("historys",list);
+			return mav;
+		}
+		
+		
+		//显示借阅列表
+		@RequestMapping("/sborrow.do")
+		   public ModelAndView find(HttpServletRequest request){
+		    String name=(String) request.getSession().getAttribute("username");
+		    User user = userService.findUseridService(name);
+	    	String a=user.getName();
+		    List<Borrow> list = borrowService.getsBorrowService(a);
+			ModelAndView mav =new ModelAndView("myBorrow");
 			mav.addObject("historys",list);
 			return mav;
 		}
