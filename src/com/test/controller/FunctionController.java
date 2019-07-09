@@ -58,7 +58,7 @@ public class FunctionController {
 			mav.addObject("historys",list);
 			return mav;
 	    }
-	    //借阅查询指令
+	    //学生借阅查询指令
 	    @RequestMapping("/findb.do")
 	    public ModelAndView findb(String nameForQuery,HttpServletRequest request){
 	    	String name=(String) request.getSession().getAttribute("username");
@@ -143,5 +143,21 @@ public class FunctionController {
 			return mav;
 	    }
 	    
-	    
+	  //归还指令
+	    @RequestMapping("/returnbook.do")
+	    public ModelAndView ret(Model model,@RequestParam("ret") String id,HttpServletRequest request){
+	    	System.out.println(id);
+	    	Borrow borrow = new Borrow();
+	    	borrow.setId(Integer.decode(id));
+	    	Date date = new Date();
+	    	borrow.setReturntime(date);
+	    	borrowService.returnBook(borrow);
+	        String name=(String) request.getSession().getAttribute("username");
+		    User user = userService.findUseridService(name);
+	    	String a=user.getName();
+		    List<Borrow> list = borrowService.getsBorrowService(a);
+			ModelAndView mav =new ModelAndView("myBorrow");
+			mav.addObject("historys",list);
+			return mav;
+	    }
 }

@@ -24,5 +24,8 @@
 <insert id="insertBorrow" parameterType="com.test.entity.Borrow" useGeneratedKeys="true">
 		insert into borrow(bookname,author,press,studynumb,name,borrowtime,status) VALUES (#{bookname},#{author},#{press},#{studynumb},#{name},#{borrowtime},"1")
 </insert>
+<update id="returnBook" parameterType="com.test.entity.Borrow">
+        update borrow set returntime=#{returntime} where Id=#{id}
+</update>
 
 </mapper>

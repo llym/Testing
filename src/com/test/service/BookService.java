@@ -23,4 +23,6 @@ public interface BookService {
 	public Book findBookidService(Integer id);
 	
 	public void reduceBookService(Integer id);
+	
+	public void addBookService(Integer id);
 }

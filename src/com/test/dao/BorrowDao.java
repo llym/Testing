@@ -21,5 +21,6 @@ public List<Borrow> getsBorrow(String name);
 
 public List<Borrow> findsBorrow(Borrow borrow);
 
+public void returnBook(Borrow borrow);
 
 }

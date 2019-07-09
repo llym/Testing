@@ -21,4 +21,6 @@ public interface BorrowService {
 	public List<Borrow> getsBorrowService(String name);
 	
 	public List<Borrow> findsBorrow(Borrow borrow);
+	
+	public void returnBook(Borrow borrow);
 }

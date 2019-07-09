@@ -30,5 +30,7 @@
 <update id="reduceBook" parameterType="com.test.entity.Book">
         update book set inventory=inventory-1 where Id=#{id}
 </update>
- 
+<update id="addBook" parameterType="com.test.entity.Book">
+        update book set inventory=inventory+1 where Id=#{id}
+</update> 
 </mapper>

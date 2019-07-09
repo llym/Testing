@@ -66,4 +66,10 @@ public class BorrowServiceImpl implements BorrowService{
 		return borrowdao.findsBorrow(borrow);
 	}
 
+	@Override
+	public void returnBook(Borrow borrow) {
+		// TODO Auto-generated method stub
+		borrowdao.returnBook(borrow);
+	}
+
 }
